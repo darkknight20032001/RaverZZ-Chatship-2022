@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import {BrowserRouter as Router , Route, Routes , Link} from 'react-router-dom'
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
 import './App.css';
-
+import Register from './components/Register';
+import Login from './components/Login';
+import AuthProvider from './context/auth';
+import PrivateRoute from './components/PrivateRoute';
+import Profile from './pages/Profile';
 function App() {
+  // const [user] = useAuthState(auth);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path='/register' element={<Register/>} />
+        <Route path='/login' element={<Login/>} />
+        <Route path='/profile' element={<Profile/>} />
+        
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 
