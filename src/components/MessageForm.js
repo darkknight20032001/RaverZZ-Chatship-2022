@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Attachment from "./svg/Attachment";
-
+import Func from "./svg/Func";
+import {BrowserRouter, Route, Routes, useNavigate} from 'react-router-dom'
 function MessageForm({ HandleSubmit, text, setText, setAttach, attach }) {
+ 
+ const Navigation = useNavigate();
   return (
     <form className="message_form" onSubmit={HandleSubmit}>
       <label htmlFor="img">
@@ -14,8 +17,10 @@ function MessageForm({ HandleSubmit, text, setText, setAttach, attach }) {
         style={{ display: "none" }}
         onChange={(event) => {
           setAttach(event.target.files[0]);
+          
         }}
       />
+     
       <div>
         <input
           type="text"

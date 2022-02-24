@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Camera from "../components/svg/Camera";
 import { storage, db, auth } from "../firebase";
-import Img from '../bhagatsingh.jpg'
+import Img from "../bhagatsingh.jpg";
 import {
   ref,
   getDownloadURL,
@@ -31,9 +31,6 @@ const Profile = () => {
           `avatar/${new Date().getTime()} - ${img.name}`
         );
         try {
-          if (user.avatarPath) {
-            await deleteObject(ref(storage, user.avatarPath));
-          }
           const snap = await uploadBytes(imgRef, img);
           const url = await getDownloadURL(ref(storage, snap.ref.fullPath));
 
@@ -56,12 +53,11 @@ const Profile = () => {
       const confirm = window.confirm("Delete avatar?");
       if (confirm) {
         await deleteObject(ref(storage, user.avatarPath));
-
         await updateDoc(doc(db, "users", auth.currentUser.uid), {
           avatar: "",
           avatarPath: "",
         });
-        history('/');
+        history("/");
       }
     } catch (err) {
       console.log(err.message);

@@ -3,7 +3,7 @@ import Img from "../bhagatsingh.jpg";
 import { onSnapshot, doc } from "firebase/firestore";
 import { db } from "../firebase";
 
-const User = ({ CurrentUser, user, selectUser, chat }) => {
+const User = ({ CurrentUser,  user, selectUser, chat }) => {
   const user2 = user?.uid;
   const [data, setData] = useState("");
   const [Selection, setSelection] = useState(false);
@@ -22,9 +22,11 @@ const User = ({ CurrentUser, user, selectUser, chat }) => {
       className={`user_wrapper`}
       onClick={() => {
         selectUser(user);
+        
       }}
     >
       <div className="user_info">
+      
         <div className="user_detail">
           <img src={user.avatar || Img} alt="avatar" className="avatar" />
           <h4>{user.name}</h4>

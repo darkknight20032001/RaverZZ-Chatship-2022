@@ -1,6 +1,7 @@
 import {
   addDoc,
   collection,
+  deleteDoc,
   doc,
   getDoc,
   onSnapshot,
@@ -75,6 +76,7 @@ function Home() {
         CurrentUser > User2
           ? `${CurrentUser + User2}`
           : `${User2 + CurrentUser}`;
+          
       let url;
       if (attach) {
         const imgRef = ref(
@@ -86,6 +88,7 @@ function Home() {
         url = dlurl;
         setAttach(``);
       }
+      
 
       await addDoc(collection(db, "messages", id, "chat"), {
         text,
@@ -105,7 +108,7 @@ function Home() {
       setText("");
     }
   };
-
+  
   return auth.currentUser ? (
     <div className="home_container">
       <div className="users_container">
