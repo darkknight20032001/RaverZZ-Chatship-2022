@@ -365,3 +365,13 @@ section .form {
     max-width: 100%;
   }
 }
+img.Deletion{
+  position: relative;
+  margin: 1% 0px;
+  width: 3%;
+  border-radius: 50%;
+}
+
+
+
+

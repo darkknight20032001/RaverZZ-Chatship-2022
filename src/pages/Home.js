@@ -120,6 +120,8 @@ function Home() {
               selectUser={selectUser}
               CurrentUser={CurrentUser}
               chat={chat}
+              setChat={setChat}
+
             />
           );
         })}
