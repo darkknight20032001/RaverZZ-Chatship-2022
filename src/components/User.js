@@ -6,7 +6,7 @@ import { db } from "../firebase";
 const User = ({ CurrentUser,  user, selectUser, chat, setChat }) => {
   const user2 = user?.uid;
   const [data, setData] = useState("");
-  const [Select, setSelect] = useState(false);
+  
 
   useEffect(() => {
     const id =
@@ -21,25 +21,14 @@ const User = ({ CurrentUser,  user, selectUser, chat, setChat }) => {
     <div
       className={`user_wrapper`}
       onClick={() => {
-        if(!Select)
-        {
+        
         selectUser(user);
-        }
-        else{
-          setChat(null);
-        }
+        
+        
                 
       }}
     >
-    <div style={{backgroundColor: 'red'}}
-     onClick={()=>{
-       window.confirm(`Do you want to block ${user.name}???`);
-       if(window.confirm)
-       {
-         setSelect(true);
-       }
-     }}
-     >{Select?"Blocked":"Block"}</div>
+    
       <div className="user_info">
       
         <div className="user_detail">
