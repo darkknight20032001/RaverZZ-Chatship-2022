@@ -30,7 +30,6 @@ function Login() {
       );
       await updateDoc(doc(db, "users", result.user.uid), {
         uid: result.user.uid,
-        
         isOnline: true,
       });
       setData({
